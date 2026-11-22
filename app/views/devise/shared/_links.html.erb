@@ -1,0 +1,6 @@
+<div class="mt-3 small d-flex flex-column gap-1">
+  <% if controller_name != "sessions" %><%= link_to t("auth.sign_in"), new_user_session_path %><% end %>
+  <% if controller_name != "registrations" %><%= link_to t("auth.sign_up"), new_user_registration_path %><% end %>
+  <% if controller_name != "passwords" %><%= link_to t("auth.forgot_password"), new_user_password_path %><% end %>
+  <% if controller_name != "confirmations" %><%= link_to t("auth.resend_confirmation"), new_user_confirmation_path %><% end %>
+</div>

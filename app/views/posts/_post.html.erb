@@ -1,0 +1,7 @@
+<div class="post border-bottom py-2" data-post-id="<%= post.id %>">
+  <div class="small text-body-secondary mb-1">
+    <%= link_to post.user.name, user_path(post.user), class: "fw-semibold" %>
+    · <time datetime="<%= post.created_at.iso8601 %>"><%= l(post.created_at, format: :short) %></time>
+  </div>
+  <%= markdown(post.body) %>
+</div>

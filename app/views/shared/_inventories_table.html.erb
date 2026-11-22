@@ -1,0 +1,34 @@
+<%# Read-only table of inventories: used on the home page and in search results. %>
+<% if inventories.empty? %>
+  <p class="text-body-secondary"><%= t("common.nothing_found") %></p>
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th><%= t("inventories.title") %></th>
+          <th class="d-none d-md-table-cell"><%= t("inventories.description") %></th>
+          <th><%= t("inventories.category") %></th>
+          <th><%= t("inventories.creator") %></th>
+          <th class="text-end"><%= t("inventories.items") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% inventories.each do |inventory| %>
+          <tr>
+            <td>
+              <% if inventory.image_url.present? %>
+                <%= image_tag inventory.image_url, class: "rounded me-2 thumb", alt: "", loading: "lazy" %>
+              <% end %>
+              <%= link_to inventory.title, inventory_path(inventory), class: "fw-medium" %>
+            </td>
+            <td class="d-none d-md-table-cell text-body-secondary"><%= truncate(CGI.unescapeHTML(strip_tags(markdown(inventory.description))).squish, length: 90) %></td>
+            <td><%= inventory.category&.name %></td>
+            <td><%= link_to inventory.user.name, user_path(inventory.user) %></td>
+            <td class="text-end"><%= inventory.items_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

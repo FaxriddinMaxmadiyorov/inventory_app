@@ -1,0 +1,48 @@
+<div class="row g-3" data-autosave-form>
+  <div class="col-lg-8">
+    <div class="mb-3">
+      <label for="inventory-title" class="form-label"><%= t("inventories.title") %></label>
+      <input type="text" id="inventory-title" class="form-control" maxlength="200" data-field="title" value="<%= @inventory.title %>">
+    </div>
+    <div class="mb-3">
+      <label for="inventory-description" class="form-label"><%= t("inventories.description") %></label>
+      <textarea id="inventory-description" class="form-control" rows="6" data-field="description" data-markdown><%= @inventory.description %></textarea>
+      <div class="form-text"><%= t("common.markdown_supported") %></div>
+    </div>
+    <div class="mb-3">
+      <label for="inventory-tags" class="form-label"><%= t("inventories.tags") %></label>
+      <select id="inventory-tags" multiple data-field="tags" data-tags data-url="<%= tags_path %>" placeholder="<%= t('inventories.tags_placeholder') %>">
+        <% @inventory.tags.each do |tag| %>
+          <option value="<%= tag.name %>" selected><%= tag.name %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="mb-3">
+      <label for="inventory-category" class="form-label"><%= t("inventories.category") %></label>
+      <select id="inventory-category" class="form-select" data-field="category_id">
+        <option value=""></option>
+        <%= options_from_collection_for_select(Category.order(:name), :id, :name, @inventory.category_id) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <span class="form-label d-block"><%= t("inventories.image") %></span>
+      <input type="hidden" id="inventory-image-url" data-field="image_url" value="<%= @inventory.image_url %>">
+      <img src="<%= @inventory.image_url %>" alt="" class="img-fluid rounded border mb-2 <%= 'd-none' if @inventory.image_url.blank? %>" data-image-preview>
+      <% if cloudinary_configured? %>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline-primary btn-sm" data-cloudinary
+                  data-cloud="<%= ENV['CLOUDINARY_CLOUD_NAME'] %>" data-preset="<%= ENV['CLOUDINARY_UPLOAD_PRESET'] %>">
+            <i class="bi bi-cloud-upload"></i> <%= t("inventories.upload_image") %>
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-image-remove><i class="bi bi-x-lg"></i> <%= t("inventories.remove_image") %></button>
+        </div>
+      <% else %>
+        <div class="alert alert-secondary small mb-0"><%= t("inventories.cloudinary_missing") %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

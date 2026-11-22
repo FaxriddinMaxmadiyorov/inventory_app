@@ -1,0 +1,42 @@
+/* Small additions on top of Bootstrap. */
+
+.check-col { width: 2.25rem; }
+.thumb { width: 2rem; height: 2rem; object-fit: cover; }
+.inventory-image { max-width: 220px; max-height: 220px; object-fit: cover; align-self: flex-start; }
+.auth-card { max-width: 26rem; }
+.preview-image { max-height: 320px; }
+.preview-pdf { height: 420px; }
+
+.navbar form.button_to { display: contents; }
+.navbar .btn-link.nav-link { text-decoration: none; border: 0; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .9rem; line-height: 1.3; }
+.tag-cloud a { text-decoration: none; }
+.tag-cloud a:hover { text-decoration: underline; }
+
+.inventory-tabs { scrollbar-width: thin; }
+.inventory-tabs .nav-link { border-bottom-color: transparent; }
+
+.drag-handle { cursor: grab; touch-action: none; }
+.sortable-ghost { opacity: .4; }
+.id-element.sortable-chosen, .field-row.sortable-chosen { background: var(--bs-tertiary-bg); }
+
+.markdown > :last-child { margin-bottom: 0; }
+.markdown img { max-width: 100%; }
+.markdown table { width: auto; margin-bottom: 1rem; }
+.markdown th, .markdown td { padding: .25rem .5rem; border: 1px solid var(--bs-border-color); }
+
+.item-form .form-check-input { cursor: pointer; }
+
+/* EasyMDE and Tom Select in the dark theme */
+[data-bs-theme="dark"] .EasyMDEContainer .CodeMirror { color: var(--bs-body-color); background: var(--bs-body-bg); border-color: var(--bs-border-color); }
+[data-bs-theme="dark"] .EasyMDEContainer .CodeMirror-cursor { border-color: var(--bs-body-color); }
+[data-bs-theme="dark"] .editor-toolbar { border-color: var(--bs-border-color); }
+[data-bs-theme="dark"] .editor-toolbar button { color: var(--bs-body-color); }
+[data-bs-theme="dark"] .editor-toolbar button:hover, [data-bs-theme="dark"] .editor-toolbar button.active { background: var(--bs-secondary-bg); border-color: var(--bs-border-color); }
+[data-bs-theme="dark"] .editor-preview { background: var(--bs-tertiary-bg); }
+[data-bs-theme="dark"] .ts-control, [data-bs-theme="dark"] .ts-control input, [data-bs-theme="dark"] .ts-dropdown { color: var(--bs-body-color); background: var(--bs-body-bg); }
+[data-bs-theme="dark"] .ts-dropdown .active { background: var(--bs-secondary-bg); color: var(--bs-body-color); }
+[data-bs-theme="dark"] .ts-wrapper.multi .ts-control > div { background: var(--bs-secondary-bg); color: var(--bs-body-color); }
+
+.id-help-popover .popover-body { white-space: pre-line; }

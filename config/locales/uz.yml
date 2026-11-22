@@ -1,0 +1,258 @@
+uz:
+  app:
+    name: Inventarlar
+  languages:
+    en: English
+    uz: O'zbekcha
+  nav:
+    search: Qidirish
+    search_placeholder: Inventar va elementlarni qidirish
+    theme_dark: Tungi mavzu
+    theme_light: Kunduzgi mavzu
+    my_page: Mening sahifam
+    account: Hisob
+    admin: Foydalanuvchilar
+    sign_in: Kirish
+    sign_up: Ro'yxatdan o'tish
+    sign_out: Chiqish
+  common:
+    close: Yopish
+    nothing_found: Hozircha hech narsa yo'q.
+    new: Yangi
+    edit: Tahrirlash
+    delete: O'chirish
+    save: Saqlash
+    cancel: Bekor qilish
+    confirm_delete: Tanlangan yozuvlar o'chirilsinmi? Bu amalni qaytarib bo'lmaydi.
+    filter: Nomi bo'yicha filtr
+    select: Tanlash
+    select_all: Hammasini tanlash
+    drag: Tartibni o'zgartirish uchun torting
+    reload: Sahifani yangilash
+    markdown_supported: Markdown qo'llab-quvvatlanadi.
+    checked: Ha
+    unchecked: "Yo'q"
+  errors:
+    not_found: Sahifa topilmadi
+    back_home: Bosh sahifaga qaytish
+  home:
+    latest: So'nggi inventarlar
+    popular: Eng ommabop inventarlar
+    tags: Teglar
+  search:
+    title: Qidiruv
+    by_tag: Tegli inventarlar
+    results_for: "“%{query}” bo'yicha qidiruv natijalari"
+    inventories: Inventarlar
+    items: Elementlar
+    inventory: Inventar
+    matched_text: Mazmuni
+  inventories:
+    title: Nomi
+    description: Tavsif
+    category: Kategoriya
+    creator: Muallif
+    items: Elementlar
+    created_at: Yaratilgan
+    public: Ommaviy
+    restricted: Cheklangan kirish
+    new_title: Yangi inventar
+    tags: Teglar
+    tags_placeholder: Teg topish yoki qo'shish uchun yozing
+    image: Rasm
+    upload_image: Yuklash
+    remove_image: Olib tashlash
+    cloudinary_missing: Rasm yuklash sozlanmagan. CLOUDINARY_CLOUD_NAME va CLOUDINARY_UPLOAD_PRESET qiymatlarini kiriting.
+    tabs:
+      items: Elementlar
+      chat: Muhokama
+      settings: Sozlamalar
+      custom_id: Maxsus ID
+      fields: Maydonlar
+      access: Ruxsatlar
+      stats: Statistika
+      export: Eksport
+  users:
+    member_since: "Ro'yxatdan o'tgan: %{date}"
+    admin: Admin
+    user: Foydalanuvchi
+    blocked: Bloklangan
+    active: Faol
+    my_inventories: Mening inventarlarim
+    inventories: Inventarlar
+    writable_inventories: Men tahrirlay oladigan inventarlar
+    name: Ism
+    email: E-mail
+    role: Rol
+    status: Holat
+    registered: Ro'yxatdan o'tgan
+  admin:
+    users: Foydalanuvchilar
+    block: Bloklash
+    unblock: Blokdan chiqarish
+    promote: Admin qilish
+    demote: Adminlikdan olish
+    filter: Ism yoki e-mail boshlanishi
+    you: siz
+  items:
+    add: Element qo'shish
+    filter: Elementlarni filtrlash
+    new: Yangi element
+    empty: Bu inventarda hali element yo'q.
+    created_at: Yaratilgan
+    created_by: Kim yaratgan
+    likes: Layklar
+    like: Layk bosish
+    unlike: Laykni olib tashlash
+    deleted_user: o'chirilgan foydalanuvchi
+    id_placeholder: Avtomatik yaratiladi
+    id_hint_new: Bo'sh qoldirsangiz, ID inventar formati bo'yicha yaratiladi.
+    id_hint_edit: ID inventarning joriy formatiga mos bo'lishi kerak.
+    id_example: "Namuna: %{example}"
+  posts:
+    empty: Hali xabar yo'q.
+    new: Yangi xabar
+    placeholder: Xabar yozing
+    send: Yuborish
+    sign_in_hint: muhokamada qatnashish uchun tizimga kiring.
+  custom_id:
+    intro: Inventar raqamlarini o'zingizga qulay formatda sozlang. Element qo'shing, tahrirlang, tartibini o'zgartirish uchun torting yoki o'chirish uchun ro'yxatdan tashqariga tortib chiqaring.
+    example: Namuna
+    element_type: Element turi
+    format: Format
+    help_title: Format bo'yicha yordam
+    add: Element qo'shish
+    note: Format o'zgarganda mavjud elementlarning ID'lari o'zgarmaydi. Yangi format element yaratilganda yoki tahrirlanganda qo'llanadi.
+    kinds:
+      fixed: O'zgarmas matn
+      rand20: 20 bitli tasodifiy son
+      rand32: 32 bitli tasodifiy son
+      rand6: 6 xonali tasodifiy son
+      rand9: 9 xonali tasodifiy son
+      guid: GUID
+      datetime: Sana/vaqt
+      sequence: Tartib raqami
+    hints:
+      fixed: O'zgarmaydigan matn bo'lagi. Istalgan Unicode belgilar, jumladan emoji.
+      rand20: Tasodifiy qiymat. Masalan, olti xonali o'nlik (D6) yoki 5 xonali o'n oltilik (X5).
+      rand32: Tasodifiy qiymat. Masalan, o'n xonali o'nlik (D10) yoki 8 xonali o'n oltilik (X8).
+      rand6: 000000 dan 999999 gacha tasodifiy son (D6).
+      rand9: 000000000 dan 999999999 gacha tasodifiy son (D9).
+      guid: Global noyob identifikator, chiziqchalar bilan (D) yoki ularsiz (N).
+      datetime: Element yaratilgan sana va vaqt. Masalan, yil (yyyy) yoki hafta kunining qisqartmasi (ddd).
+      sequence: Tartib raqami. Masalan, oldida nollar bilan (D4) yoki ularsiz (D).
+    help:
+      fixed: "Matn o'zgarishsiz qo'yiladi.\nMisollar: PART-  |  📚-  |  _"
+      rand20: "0 dan 1 048 575 gacha son.\nD — o'nlik, D7 — 7 xonagacha nollar bilan to'ldirilgan o'nlik.\nX — o'n oltilik, X5 — 5 xonagacha to'ldirilgan; kichik harflar uchun x5.\nKoddan keyingi matn o'zgarishsiz qo'shiladi: X5_ → A7E3A_"
+      rand32: "0 dan 4 294 967 295 gacha son.\nD — o'nlik, D10 — nollar bilan to'ldirilgan o'nlik.\nX — o'n oltilik, X8 — 8 xonagacha to'ldirilgan; kichik harflar uchun x8.\nKoddan keyingi matn o'zgarishsiz qo'shiladi: X8- → E74FA329-"
+      rand6: "0 dan 999 999 gacha son.\nD6 — doim olti xona, D — oldidagi nollarsiz.\nX yoki X5 — shu sonning o'n oltilik ko'rinishi.\nKoddan keyingi matn o'zgarishsiz qo'shiladi: D6_ → 004217_"
+      rand9: "0 dan 999 999 999 gacha son.\nD9 — doim to'qqiz xona, D — oldidagi nollarsiz.\nX yoki X8 — shu sonning o'n oltilik ko'rinishi.\nKoddan keyingi matn o'zgarishsiz qo'shiladi."
+      guid: "D — chiziqchalar bilan 36 belgi, N — ularsiz 32 belgi.\nKoddan keyingi matn o'zgarishsiz qo'shiladi: N- → 3f2a…9c-"
+      datetime: "yyyy — yil, yy — yilning oxirgi ikki raqami\nMM — oy, MMM — oy nomining qisqartmasi\ndd — kun, ddd — hafta kunining qisqartmasi\nHH — soat, mm — daqiqa, ss — soniya\nBoshqa belgilar saqlanadi: yyyy-MM-dd_ → 2026-11-21_"
+      sequence: "Inventardagi eng katta tartib raqami plyus bir.\nD — o'zgarishsiz, D4 — 4 xonagacha nollar bilan: 0013.\nX4 — o'n oltilik ko'rinishda.\nKoddan keyingi matn o'zgarishsiz qo'shiladi: D3_ → 013_"
+  fields:
+    intro: "Shu inventardagi elementlarning maxsus maydonlari: har bir turdan %{count} tagacha. Tartibni o'zgartirish uchun torting. Bu yerdan olib tashlangan maydon faqat ko'rsatilmaydigan bo'ladi."
+    add: Maydon qo'shish
+    empty: Hali maxsus maydon yo'q.
+    fixed_note: "ID, muallif va yaratilgan sana har bir elementda bor, shuning uchun bu ro'yxatda ko'rsatilmaydi."
+    name: Sarlavha
+    description: Tavsif (formalarda izoh sifatida chiqadi)
+    show: Jadvalda
+    show_hint: Bu maydonni elementlar jadvalida ustun sifatida ko'rsatish
+    max_length: Maks. uzunlik
+    pattern: Regulyar ifoda
+    min: Min. qiymat
+    max: Maks. qiymat
+    options: "Variantlar, har biri alohida qatorda"
+    kinds:
+      string: Bir qatorli matn
+      text: Ko'p qatorli matn
+      number: Son
+      link: Hujjat/rasm havolasi
+      bool: Belgilash katagi
+      select: Ro'yxatdan bittasi
+  access:
+    public: Ommaviy inventar
+    public_hint: Tizimga kirgan har qanday foydalanuvchi element qo'sha, tahrirlay va o'chira oladi.
+    users: Yozish huquqiga ega foydalanuvchilar
+    add: Foydalanuvchi qo'shish
+    search_placeholder: Ism yoki e-mailni yozishni boshlang
+    remove: Olib tashlash
+    empty: Hali hech kim qo'shilmagan.
+  stats:
+    items: ta element
+    numeric: Sonli maydonlar
+    field: Maydon
+    filled: To'ldirilgan
+    average: O'rtacha
+    min: Min
+    max: Maks
+    most_used: eng ko'p uchraydigan qiymatlar
+    no_values: Hali qiymat yo'q
+    flags: Belgilash kataklari
+    checked: "%{total} tadan %{checked} tasi belgilangan"
+  export:
+    intro: "Shu inventarning barcha %{count} ta elementini hamma maxsus maydonlari bilan yuklab oling."
+  flash:
+    forbidden: Bu amalni bajarishga ruxsatingiz yo'q.
+    saved: O'zgarishlar saqlandi.
+    deleted: "O'chirildi: %{count}."
+    delete_conflict: "O'chirilmadi: %{count}. Bu yozuvlarni siz sahifani ochganingizdan keyin boshqa foydalanuvchi o'zgartirgan. Ularni ko'rib chiqib, qayta urinib ko'ring."
+    stale: Bu yozuvni siz ochganingizdan keyin boshqa foydalanuvchi o'zgartirgan. O'zgarishlaringiz saqlanmadi.
+    item_created: "%{id} elementi qo'shildi."
+    oauth_failed: Bu hisob orqali kirib bo'lmadi.
+  js:
+    saved: Barcha o'zgarishlar saqlandi
+    unsaved: Saqlanmagan o'zgarishlar bor
+    saving: Saqlanmoqda…
+    conflict: Boshqa foydalanuvchi o'zgartirgan
+    error: Saqlab bo'lmadi
+    offline: Aloqa yo'q
+  auth:
+    continue_with: "%{provider} orqali davom etish"
+    or_email: yoki e-mail orqali
+    sign_in: Kirish
+    sign_up: Ro'yxatdan o'tish
+    forgot_password: Parolni unutdingizmi?
+    resend_confirmation: Tasdiqlash xatini qayta yuborish
+    send_reset: Tiklash havolasini yuborish
+    change_password: Parolni o'zgartirish
+    name: Ism
+    email: E-mail
+    password: Parol
+    new_password: Yangi parol
+    password_confirmation: Parolni takrorlang
+    current_password: Joriy parol
+    current_password_hint: O'zgarishlarni tasdiqlash uchun kerak.
+    remember_me: Eslab qolish
+    password_hint: "Kamida %{count} ta belgi."
+    leave_blank: Joriy parolni saqlab qolish uchun bo'sh qoldiring.
+    pending_reconfirmation: "%{email} manzili tasdiqlanishi kutilmoqda."
+  mail:
+    greeting: "Salom, %{name}!"
+    confirm_text: "Ro'yxatdan o'tishni yakunlash uchun e-mail manzilingizni tasdiqlang:"
+    confirm_link: Hisobni tasdiqlash
+    reset_text: "Parolingizni o'zgartirish uchun havola so'raldi:"
+    reset_link: Parolni o'zgartirish
+    reset_ignore: Agar bu siz bo'lmasangiz, xatga e'tibor bermang. Parol o'zgarmaydi.
+    email_changed: "E-mail manzilingiz %{email} ga o'zgartirildi."
+    password_changed: Parolingiz o'zgartirildi.
+  activerecord:
+    attributes:
+      item:
+        custom_id: ID
+      inventory:
+        title: Nomi
+        image_url: Rasm
+      user:
+        name: Ism
+        email: E-mail
+        password: Parol
+        password_confirmation: Parol tasdig'i
+        current_password: Joriy parol
+    errors:
+      models:
+        item:
+          attributes:
+            custom_id:
+              invalid_format: "inventar formatiga mos emas (namuna: %{example})"

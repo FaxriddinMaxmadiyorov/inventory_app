@@ -1,0 +1,20 @@
+<p class="text-body-secondary small"><%= t("custom_id.intro") %></p>
+
+<p class="fs-5"><%= t("custom_id.example") %>: <strong class="text-break" data-id-example><%= @inventory.custom_id_generator.example %></strong></p>
+
+<div data-id-editor
+     data-preview-url="<%= custom_id_preview_inventory_path(@inventory) %>"
+     data-max="<%= CustomId::MAX_ELEMENTS %>"
+     data-hints="<%= t('custom_id.hints').to_json %>"
+     data-help="<%= t('custom_id.help').to_json %>"
+     data-defaults="<%= CustomId::DEFAULT_FORMAT.to_json %>">
+  <div data-id-list>
+    <% @inventory.id_elements.each do |element| %>
+      <%= render "id_element_row", element: element %>
+    <% end %>
+  </div>
+  <button type="button" class="btn btn-outline-primary mt-2" data-id-add><i class="bi bi-plus-lg"></i> <%= t("custom_id.add") %></button>
+  <template data-id-template><%= render "id_element_row", element: nil %></template>
+</div>
+
+<p class="form-text mt-3"><%= t("custom_id.note") %></p>

@@ -1,0 +1,67 @@
+# Rails' own messages (dates, validation errors) in Uzbek.
+uz:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d %b"
+      long: "%Y-yil %-d-%B"
+    day_names: [Yakshanba, Dushanba, Seshanba, Chorshanba, Payshanba, Juma, Shanba]
+    abbr_day_names: [Yak, Dush, Sesh, Chor, Pay, Jum, Shan]
+    month_names: [~, yanvar, fevral, mart, aprel, may, iyun, iyul, avgust, sentabr, oktabr, noyabr, dekabr]
+    abbr_month_names: [~, yan, fev, mar, apr, may, iyn, iyl, avg, sen, okt, noy, dek]
+    order: [day, month, year]
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%Y-yil %-d-%B, %H:%M"
+    am: ertalab
+    pm: kechqurun
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " va "
+      last_word_connector: " va "
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: qabul qilinishi kerak
+      blank: bo'sh bo'lmasligi kerak
+      confirmation: "%{attribute} bilan mos kelmadi"
+      empty: bo'sh bo'lmasligi kerak
+      equal_to: "%{count} ga teng bo'lishi kerak"
+      even: juft bo'lishi kerak
+      exclusion: band qilingan
+      greater_than: "%{count} dan katta bo'lishi kerak"
+      greater_than_or_equal_to: "%{count} dan kichik bo'lmasligi kerak"
+      inclusion: ro'yxatda yo'q
+      invalid: noto'g'ri
+      less_than: "%{count} dan kichik bo'lishi kerak"
+      less_than_or_equal_to: "%{count} dan katta bo'lmasligi kerak"
+      model_invalid: "Tekshiruvdan o'tmadi: %{errors}"
+      not_a_number: son emas
+      not_an_integer: butun son bo'lishi kerak
+      odd: toq bo'lishi kerak
+      other_than: "%{count} dan farq qilishi kerak"
+      present: bo'sh bo'lishi kerak
+      required: ko'rsatilishi kerak
+      taken: allaqachon band
+      too_long: "juda uzun (ko'pi bilan %{count} ta belgi)"
+      too_short: "juda qisqa (kamida %{count} ta belgi)"
+      wrong_length: "uzunligi noto'g'ri (%{count} ta belgi bo'lishi kerak)"
+      already_confirmed: allaqachon tasdiqlangan, tizimga kirib ko'ring
+      confirmation_period_expired: "%{period} ichida tasdiqlanishi kerak edi, yangisini so'rang"
+      expired: muddati o'tgan, yangisini so'rang
+      not_found: topilmadi
+      not_locked: bloklanmagan
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Tekshiruvdan o'tmadi: %{errors}"
+  helpers:
+    select:
+      prompt: Tanlang
+    submit:
+      create: Yaratish
+      update: Saqlash
+      submit: Saqlash

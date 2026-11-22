@@ -1,0 +1,60 @@
+<% content_for :title, t("admin.users") %>
+
+<h1 class="h3 mb-3"><%= t("admin.users") %></h1>
+
+<div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+  <div class="btn-toolbar gap-2" data-bulk-toolbar="users-form">
+    <div class="btn-group btn-group-sm">
+      <button type="submit" form="users-form" name="op" value="block" class="btn btn-outline-secondary" data-bulk-min="1" disabled><i class="bi bi-lock"></i> <%= t("admin.block") %></button>
+      <button type="submit" form="users-form" name="op" value="unblock" class="btn btn-outline-secondary" data-bulk-min="1" disabled><i class="bi bi-unlock"></i> <%= t("admin.unblock") %></button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button type="submit" form="users-form" name="op" value="promote" class="btn btn-outline-secondary" data-bulk-min="1" disabled><i class="bi bi-shield-plus"></i> <%= t("admin.promote") %></button>
+      <button type="submit" form="users-form" name="op" value="demote" class="btn btn-outline-secondary" data-bulk-min="1" disabled><i class="bi bi-shield-minus"></i> <%= t("admin.demote") %></button>
+    </div>
+    <button type="submit" form="users-form" name="op" value="delete" class="btn btn-outline-danger btn-sm" data-bulk-min="1" data-confirm="<%= t('common.confirm_delete') %>" disabled><i class="bi bi-trash"></i> <%= t("common.delete") %></button>
+  </div>
+  <%= search_form_for @search, url: admin_users_path, html: { id: "users-search", class: "ms-auto" } do |f| %>
+    <%= keep_sort_field %>
+    <%= f.search_field :name_or_email_start, class: "form-control form-control-sm", placeholder: t("admin.filter"), "aria-label": t("admin.filter") %>
+  <% end %>
+</div>
+
+<%= form_with url: bulk_admin_users_path, method: :patch, id: "users-form" do %>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th class="check-col"><input type="checkbox" class="form-check-input" data-bulk-all aria-label="<%= t('common.select_all') %>"></th>
+          <th><%= table_sort_link @search, :name, t("users.name") %></th>
+          <th><%= table_sort_link @search, :email, t("users.email") %></th>
+          <th><%= table_sort_link @search, :admin, t("users.role"), default_order: :desc %></th>
+          <th><%= table_sort_link @search, :blocked, t("users.status"), default_order: :desc %></th>
+          <th><%= table_sort_link @search, :created_at, t("users.registered"), default_order: :desc %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><input type="checkbox" class="form-check-input" name="ids[]" value="<%= user.id %>" data-bulk-item aria-label="<%= user.name %>"></td>
+            <td>
+              <%= link_to user.name, user_path(user) %>
+              <% if user.id == current_user.id %><span class="badge text-bg-secondary"><%= t("admin.you") %></span><% end %>
+            </td>
+            <td><%= user.email %></td>
+            <td><%= user.admin? ? t("users.admin") : t("users.user") %></td>
+            <td>
+              <% if user.blocked? %>
+                <span class="badge text-bg-danger"><%= t("users.blocked") %></span>
+              <% else %>
+                <span class="badge text-bg-success"><%= t("users.active") %></span>
+              <% end %>
+            </td>
+            <td class="text-nowrap"><%= l(user.created_at, format: :short) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<%= paginate @users %>

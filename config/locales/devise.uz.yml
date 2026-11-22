@@ -1,0 +1,54 @@
+uz:
+  devise:
+    confirmations:
+      confirmed: E-mail manzilingiz tasdiqlandi.
+      send_instructions: Bir necha daqiqa ichida e-mail manzilingizni tasdiqlash bo'yicha xat olasiz.
+      send_paranoid_instructions: Agar e-mail manzilingiz bazamizda bo'lsa, bir necha daqiqa ichida uni tasdiqlash bo'yicha xat olasiz.
+    failure:
+      already_authenticated: Siz allaqachon tizimga kirgansiz.
+      inactive: Hisobingiz hali faollashtirilmagan.
+      invalid: "%{authentication_keys} yoki parol noto'g'ri."
+      locked: Hisobingiz bloklangan.
+      blocked: Hisobingiz bloklangan.
+      last_attempt: Hisobingiz bloklanishidan oldin yana bitta urinish qoldi.
+      not_found_in_database: "%{authentication_keys} yoki parol noto'g'ri."
+      timeout: Seans muddati tugadi. Davom etish uchun qayta kiring.
+      unauthenticated: Davom etish uchun tizimga kiring yoki ro'yxatdan o'ting.
+      unconfirmed: Davom etish uchun e-mail manzilingizni tasdiqlang.
+    mailer:
+      confirmation_instructions:
+        subject: Hisobni tasdiqlash
+      reset_password_instructions:
+        subject: Parolni tiklash
+      unlock_instructions:
+        subject: Hisobni blokdan chiqarish
+      email_changed:
+        subject: E-mail o'zgartirildi
+      password_change:
+        subject: Parol o'zgartirildi
+    omniauth_callbacks:
+      failure: "%{kind} orqali kirib bo'lmadi: \"%{reason}\"."
+      success: "%{kind} hisobi orqali kirdingiz."
+    passwords:
+      no_token: Bu sahifaga faqat parolni tiklash xatidagi havola orqali kirish mumkin. Havolani to'liq nusxalaganingizni tekshiring.
+      send_instructions: Bir necha daqiqa ichida parolni tiklash bo'yicha xat olasiz.
+      send_paranoid_instructions: Agar e-mail manzilingiz bazamizda bo'lsa, bir necha daqiqa ichida parolni tiklash havolasini olasiz.
+      updated: Parolingiz o'zgartirildi. Siz tizimga kirdingiz.
+      updated_not_active: Parolingiz o'zgartirildi.
+    registrations:
+      destroyed: Hisobingiz o'chirildi.
+      signed_up: Xush kelibsiz! Ro'yxatdan o'tdingiz.
+      signed_up_but_inactive: Ro'yxatdan o'tdingiz, lekin hisobingiz hali faollashtirilmagani uchun tizimga kira olmaysiz.
+      signed_up_but_locked: Ro'yxatdan o'tdingiz, lekin hisobingiz bloklangani uchun tizimga kira olmaysiz.
+      signed_up_but_unconfirmed: E-mail manzilingizga tasdiqlash havolasi yuborildi. Hisobni faollashtirish uchun havolaga o'ting.
+      update_needs_confirmation: Hisobingiz yangilandi, lekin yangi e-mail manzilini tasdiqlash kerak. Pochtangizni tekshirib, tasdiqlash havolasiga o'ting.
+      updated: Hisobingiz yangilandi.
+      updated_but_not_signed_in: Hisobingiz yangilandi. Parol o'zgargani uchun qayta kirishingiz kerak.
+    sessions:
+      signed_in: Tizimga kirdingiz.
+      signed_out: Tizimdan chiqdingiz.
+      already_signed_out: Tizimdan chiqdingiz.
+    unlocks:
+      send_instructions: Bir necha daqiqa ichida hisobni blokdan chiqarish bo'yicha xat olasiz.
+      send_paranoid_instructions: Agar hisobingiz mavjud bo'lsa, bir necha daqiqa ichida uni blokdan chiqarish bo'yicha xat olasiz.
+      unlocked: Hisobingiz blokdan chiqarildi. Davom etish uchun tizimga kiring.

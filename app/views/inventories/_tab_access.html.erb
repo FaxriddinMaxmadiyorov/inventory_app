@@ -1,0 +1,42 @@
+<div class="form-check form-switch mb-3" data-autosave-form>
+  <input type="checkbox" class="form-check-input" role="switch" id="inventory-public" data-field="is_public" <%= 'checked' if @inventory.is_public? %>>
+  <label class="form-check-label" for="inventory-public"><%= t("access.public") %></label>
+  <div class="form-text"><%= t("access.public_hint") %></div>
+</div>
+
+<h2 class="h5"><%= t("access.users") %></h2>
+
+<%= form_with url: inventory_accesses_path(@inventory), class: "mb-3", data: { user_search_form: true } do %>
+  <label for="access-user" class="form-label"><%= t("access.add") %></label>
+  <select id="access-user" name="user_id" data-user-search data-url="<%= autocomplete_users_path %>" placeholder="<%= t('access.search_placeholder') %>"></select>
+<% end %>
+
+<div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+  <div class="btn-toolbar" data-bulk-toolbar="access-form">
+    <button type="submit" form="access-form" class="btn btn-outline-danger btn-sm" data-bulk-min="1" disabled><i class="bi bi-person-dash"></i> <%= t("access.remove") %></button>
+  </div>
+</div>
+
+<%= form_with url: bulk_destroy_inventory_accesses_path(@inventory), method: :delete, id: "access-form" do %>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th class="check-col"><input type="checkbox" class="form-check-input" data-bulk-all aria-label="<%= t('common.select_all') %>"></th>
+          <th><%= table_sort_link @access_search, :name, t("users.name") %></th>
+          <th><%= table_sort_link @access_search, :email, t("users.email") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @access_users.each do |user| %>
+          <tr>
+            <td><input type="checkbox" class="form-check-input" name="ids[]" value="<%= user.id %>" data-bulk-item aria-label="<%= user.name %>"></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<% if @access_users.empty? %><p class="text-body-secondary"><%= t("access.empty") %></p><% end %>

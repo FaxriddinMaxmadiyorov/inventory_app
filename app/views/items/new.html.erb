@@ -1,0 +1,15 @@
+<% content_for :title, t("items.new") %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to @inventory.title, inventory_path(@inventory) %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t("items.new") %></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="h3 mb-3"><%= t("items.new") %></h1>
+    <%= render "form" %>
+  </div>
+</div>

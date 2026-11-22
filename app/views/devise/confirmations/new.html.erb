@@ -1,0 +1,14 @@
+<% content_for :title, t("auth.resend_confirmation") %>
+<div class="auth-card mx-auto">
+  <h1 class="h3 mb-3"><%= t("auth.resend_confirmation") %></h1>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "shared/errors", record: resource %>
+    <div class="mb-3">
+      <%= f.label :email, t("auth.email"), class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true,
+                        value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
+    <%= f.submit t("auth.resend_confirmation"), class: "btn btn-primary w-100" %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

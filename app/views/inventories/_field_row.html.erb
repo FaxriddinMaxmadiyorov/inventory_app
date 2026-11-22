@@ -1,0 +1,59 @@
+<%# field: a CustomField for existing rows, nil inside the <template> used for new ones %>
+<li class="list-group-item field-row" data-field-row data-kind="<%= kind %>" data-slot="<%= field&.slot %>">
+  <div class="row g-2 align-items-center">
+    <div class="col-auto d-flex align-items-center gap-2">
+      <span class="drag-handle text-body-secondary" title="<%= t('common.drag') %>"><i class="bi bi-grip-vertical"></i></span>
+      <input type="checkbox" class="form-check-input mt-0" data-field-select aria-label="<%= t('common.select') %>">
+      <span class="badge text-bg-secondary field-kind"><i class="bi <%= field_kind_icon(kind) %>"></i> <%= t("fields.kinds.#{kind}") %></span>
+    </div>
+    <div class="col-12 col-md">
+      <input type="text" class="form-control" data-prop="name" maxlength="100" placeholder="<%= t('fields.name') %>" aria-label="<%= t('fields.name') %>" value="<%= field&.setting(:name) %>">
+    </div>
+    <div class="col-12 col-md">
+      <input type="text" class="form-control" data-prop="description" maxlength="250" placeholder="<%= t('fields.description') %>" aria-label="<%= t('fields.description') %>" value="<%= field&.description %>">
+    </div>
+    <div class="col-auto">
+      <div class="form-check form-switch mb-0" title="<%= t('fields.show_hint') %>">
+        <input type="checkbox" class="form-check-input" role="switch" data-prop="show" <%= 'checked' if field.nil? || field.show_in_table? %> aria-label="<%= t('fields.show') %>">
+        <span class="form-check-label small"><%= t("fields.show") %></span>
+      </div>
+    </div>
+  </div>
+
+  <% if kind == "string" %>
+    <div class="row g-2 mt-1">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text"><%= t("fields.max_length") %></span>
+          <input type="number" class="form-control" data-prop="max_length" min="1" max="255" aria-label="<%= t('fields.max_length') %>" value="<%= field&.max_length %>">
+        </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text"><%= t("fields.pattern") %></span>
+          <input type="text" class="form-control font-monospace" data-prop="pattern" maxlength="200" placeholder="[A-Z]{2}-\d+" aria-label="<%= t('fields.pattern') %>" value="<%= field&.pattern %>">
+        </div>
+      </div>
+    </div>
+  <% elsif kind == "number" %>
+    <div class="row g-2 mt-1">
+      <div class="col-6 col-md-4">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text"><%= t("fields.min") %></span>
+          <input type="number" step="any" class="form-control" data-prop="min" aria-label="<%= t('fields.min') %>" value="<%= format_number(field&.min).delete(' ') %>">
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text"><%= t("fields.max") %></span>
+          <input type="number" step="any" class="form-control" data-prop="max" aria-label="<%= t('fields.max') %>" value="<%= format_number(field&.max).delete(' ') %>">
+        </div>
+      </div>
+    </div>
+  <% elsif kind == "select" %>
+    <div class="mt-2">
+      <label class="form-label small mb-1"><%= t("fields.options") %></label>
+      <textarea class="form-control form-control-sm" rows="3" data-prop="options" aria-label="<%= t('fields.options') %>"><%= field&.setting(:options) %></textarea>
+    </div>
+  <% end %>
+</li>

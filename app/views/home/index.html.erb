@@ -1,0 +1,24 @@
+<div class="row g-4">
+  <div class="col-lg-8">
+    <h2 class="h4 mb-3"><%= t("home.latest") %></h2>
+    <%= render "shared/inventories_table", inventories: @latest %>
+  </div>
+
+  <div class="col-lg-4">
+    <h2 class="h4 mb-3"><%= t("home.tags") %></h2>
+    <% if @tags.empty? %>
+      <p class="text-body-secondary"><%= t("common.nothing_found") %></p>
+    <% else %>
+      <div class="tag-cloud">
+        <% @tags.each do |tag| %>
+          <%= link_to tag.name, search_path(tag: tag.name), style: "font-size: #{tag_cloud_size(tag, @tags)}rem", title: tag.uses_count %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-12">
+    <h2 class="h4 mb-3"><%= t("home.popular") %></h2>
+    <%= render "shared/inventories_table", inventories: @popular %>
+  </div>
+</div>

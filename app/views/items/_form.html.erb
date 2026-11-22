@@ -1,0 +1,61 @@
+<%= form_with model: [@inventory, @item], class: "item-form" do |f| %>
+  <%= render "shared/errors", record: @item %>
+  <% if @item.persisted? %><%= f.hidden_field :lock_version %><% end %>
+
+  <div class="mb-3">
+    <%= f.label :custom_id, "ID", class: "form-label" %>
+    <%= f.text_field :custom_id, class: "form-control font-monospace #{'is-invalid' if @item.errors[:custom_id].any?}", maxlength: 200,
+                     placeholder: (t("items.id_placeholder") unless @item.persisted?) %>
+    <div class="form-text">
+      <% generator = @inventory.custom_id_generator %>
+      <%= @item.persisted? ? t("items.id_hint_edit") : t("items.id_hint_new") %>
+      <% unless generator.empty? %><%= t("items.id_example", example: generator.example) %><% end %>
+    </div>
+  </div>
+
+  <% @inventory.custom_fields.each do |field| %>
+    <% input_id = "item_#{field.column}" %>
+    <div class="mb-3">
+      <% if field.kind == "bool" %>
+        <div class="form-check">
+          <%= f.check_box field.column, class: "form-check-input" %>
+          <%= f.label field.column, field.name, class: "form-check-label" %>
+        </div>
+      <% else %>
+        <%= f.label field.column, field.name, class: "form-label" %>
+        <% case field.kind %>
+        <% when "string" %>
+          <%= f.text_field field.column, class: "form-control", maxlength: field.max_length || 255 %>
+        <% when "text" %>
+          <%= f.text_area field.column, class: "form-control", rows: 4 %>
+        <% when "number" %>
+          <%= f.text_field field.column, class: "form-control", inputmode: "decimal", value: f.object.read_attribute_before_type_cast(field.column).then { |v| v.is_a?(String) ? v : format_number(v).delete(" ") } %>
+        <% when "link" %>
+          <%= f.url_field field.column, class: "form-control", placeholder: "https://" %>
+          <div class="mt-2"><%= link_preview(@item[field.column]) %></div>
+        <% when "select" %>
+          <%= f.select field.column, field.options, { include_blank: true }, class: "form-select" %>
+        <% end %>
+      <% end %>
+      <% if field.description.present? %><div class="form-text" id="<%= input_id %>_hint"><%= field.description %></div><% end %>
+    </div>
+  <% end %>
+
+  <% if @item.persisted? %>
+    <div class="row g-3 mb-3">
+      <div class="col-sm-6">
+        <label class="form-label" for="item-created-by"><%= t("items.created_by") %></label>
+        <input type="text" id="item-created-by" class="form-control" value="<%= @item.user&.name || t('items.deleted_user') %>" readonly disabled>
+      </div>
+      <div class="col-sm-6">
+        <label class="form-label" for="item-created-at"><%= t("items.created_at") %></label>
+        <input type="text" id="item-created-at" class="form-control" value="<%= l(@item.created_at, format: :long) %>" readonly disabled>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="d-flex gap-2">
+    <%= f.submit t("common.save"), class: "btn btn-primary" %>
+    <%= link_to t("common.cancel"), inventory_path(@inventory), class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

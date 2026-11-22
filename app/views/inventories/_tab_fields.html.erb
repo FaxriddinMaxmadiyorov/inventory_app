@@ -1,0 +1,30 @@
+<p class="text-body-secondary small"><%= t("fields.intro", count: CustomField::SLOTS.size) %></p>
+
+<div data-fields-editor data-max="<%= CustomField::SLOTS.size %>">
+  <div class="btn-toolbar gap-2 mb-2">
+    <div class="dropdown">
+      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-plus-lg"></i> <%= t("fields.add") %>
+      </button>
+      <ul class="dropdown-menu">
+        <% CustomField::KINDS.each do |kind| %>
+          <li><button type="button" class="dropdown-item" data-field-add="<%= kind %>"><i class="bi <%= field_kind_icon(kind) %>"></i> <%= t("fields.kinds.#{kind}") %></button></li>
+        <% end %>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-outline-danger btn-sm" data-fields-delete disabled><i class="bi bi-trash"></i> <%= t("common.delete") %></button>
+  </div>
+
+  <ul class="list-group" data-fields-list>
+    <% @inventory.custom_fields.each do |field| %>
+      <%= render "field_row", field: field, kind: field.kind %>
+    <% end %>
+  </ul>
+  <p class="text-body-secondary mt-2 <%= 'd-none' if @inventory.custom_fields.any? %>" data-fields-empty><%= t("fields.empty") %></p>
+
+  <% CustomField::KINDS.each do |kind| %>
+    <template data-field-template="<%= kind %>"><%= render "field_row", field: nil, kind: kind %></template>
+  <% end %>
+</div>
+
+<p class="form-text mt-3"><%= t("fields.fixed_note") %></p>

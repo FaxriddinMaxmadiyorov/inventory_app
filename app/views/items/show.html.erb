@@ -1,0 +1,56 @@
+<% content_for :title, @item.custom_id_was || @item.custom_id %>
+<% shown_id = @item.custom_id_was || @item.custom_id %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to @inventory.title, inventory_path(@inventory) %></li>
+    <li class="breadcrumb-item active text-break" aria-current="page"><%= shown_id %></li>
+  </ol>
+</nav>
+
+<div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+  <h1 class="h3 mb-0 font-monospace text-break"><%= shown_id %></h1>
+  <% if user_signed_in? %>
+    <%= button_to inventory_item_like_path(@inventory, @item), method: (@liked ? :delete : :post),
+                  class: "btn btn-sm #{@liked ? 'btn-danger' : 'btn-outline-danger'}", title: t(@liked ? "items.unlike" : "items.like") do %>
+      <i class="bi <%= @liked ? 'bi-heart-fill' : 'bi-heart' %>"></i> <%= @item.likes_count %>
+    <% end %>
+  <% else %>
+    <span class="text-body-secondary" title="<%= t('items.likes') %>"><i class="bi bi-heart"></i> <%= @item.likes_count %></span>
+  <% end %>
+</div>
+
+<% if @stale %>
+  <div class="alert alert-warning" role="alert">
+    <%= t("flash.stale") %>
+    <%= link_to t("common.reload"), inventory_item_path(@inventory, @item), class: "alert-link" %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-8">
+    <% if @can_write %>
+      <%= render "form" %>
+    <% else %>
+      <dl class="row">
+        <dt class="col-sm-4">ID</dt>
+        <dd class="col-sm-8 font-monospace text-break"><%= @item.custom_id %></dd>
+        <% @inventory.custom_fields.each do |field| %>
+          <dt class="col-sm-4" title="<%= field.description %>"><%= field.name %></dt>
+          <dd class="col-sm-8 text-break">
+            <% if field.kind == "text" %>
+              <%= simple_format(h(@item[field.column])) %>
+            <% else %>
+              <%= field_value(@item, field, truncate_at: nil) %>
+              <% if field.kind == "link" %><div class="mt-2"><%= link_preview(@item[field.column]) %></div><% end %>
+            <% end %>
+          </dd>
+        <% end %>
+        <dt class="col-sm-4"><%= t("items.created_by") %></dt>
+        <dd class="col-sm-8"><%= @item.user ? link_to(@item.user.name, user_path(@item.user)) : t("items.deleted_user") %></dd>
+        <dt class="col-sm-4"><%= t("items.created_at") %></dt>
+        <dd class="col-sm-8"><%= l(@item.created_at, format: :long) %></dd>
+      </dl>
+    <% end %>
+  </div>
+</div>

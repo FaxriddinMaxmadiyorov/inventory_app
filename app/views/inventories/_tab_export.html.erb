@@ -1,0 +1,5 @@
+<p><%= t("export.intro", count: @inventory.items_count) %></p>
+<div class="d-flex gap-2">
+  <%= link_to export_inventory_path(@inventory, format: :csv), class: "btn btn-outline-primary" do %><i class="bi bi-filetype-csv"></i> CSV<% end %>
+  <%= link_to export_inventory_path(@inventory, format: :xlsx), class: "btn btn-outline-primary" do %><i class="bi bi-file-earmark-spreadsheet"></i> Excel<% end %>
+</div>

@@ -1,0 +1,44 @@
+<% content_for :title, @inventory.title %>
+<% if @tab == "settings" && cloudinary_configured? %>
+  <% content_for :head do %>
+    <script defer src="https://upload-widget.cloudinary.com/latest/global/all.js"></script>
+  <% end %>
+<% end %>
+<% autosaved = @can_manage && %w[settings custom_id fields access].include?(@tab) %>
+
+<div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+  <h1 class="h2 mb-0 text-break" data-inventory-title><%= @inventory.title %></h1>
+  <% if autosaved %>
+    <span class="badge rounded-pill text-bg-success" data-autosave-status><%= t("js.saved") %></span>
+  <% end %>
+</div>
+<p class="text-body-secondary small mb-3">
+  <%= link_to @inventory.user.name, user_path(@inventory.user) %>
+  <% if @inventory.category %> · <%= @inventory.category.name %><% end %>
+  · <%= @inventory.is_public? ? t("inventories.public") : t("inventories.restricted") %>
+  <% @inventory.tags.each do |tag| %>
+    <%= link_to tag.name, search_path(tag: tag.name), class: "badge text-bg-secondary text-decoration-none" %>
+  <% end %>
+</p>
+
+<ul class="nav nav-tabs flex-nowrap overflow-auto mb-3 inventory-tabs">
+  <% tabs = InventoriesController::TABS.reject { |tab| InventoriesController::MANAGER_TABS.include?(tab) && !@can_manage } %>
+  <% tabs.each do |tab| %>
+    <li class="nav-item">
+      <%= link_to t("inventories.tabs.#{tab}"), inventory_path(@inventory, tab: (tab unless tab == "items")),
+                  class: "nav-link text-nowrap #{'active' if tab == @tab}" %>
+    </li>
+  <% end %>
+</ul>
+
+<% if autosaved %>
+  <div data-autosave data-url="<%= autosave_inventory_path(@inventory) %>" data-version="<%= @inventory.lock_version %>">
+    <div class="alert alert-warning d-none" data-autosave-conflict>
+      <span data-autosave-message></span>
+      <a href="<%= request.fullpath %>" class="alert-link"><%= t("common.reload") %></a>
+    </div>
+    <%= render "tab_#{@tab}" %>
+  </div>
+<% else %>
+  <%= render "tab_#{@tab}" %>
+<% end %>

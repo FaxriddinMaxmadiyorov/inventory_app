@@ -1,0 +1,33 @@
+<% content_for :title, t("nav.account") %>
+<div class="auth-card mx-auto">
+  <h1 class="h3 mb-3"><%= t("nav.account") %></h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "shared/errors", record: resource %>
+    <div class="mb-3">
+      <%= f.label :name, t("auth.name"), class: "form-label" %>
+      <%= f.text_field :name, autocomplete: "name", class: "form-control", required: true, maxlength: 100 %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :email, t("auth.email"), class: "form-label" %>
+      <%= f.email_field :email, autocomplete: "email", class: "form-control", required: true %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="form-text"><%= t("auth.pending_reconfirmation", email: resource.unconfirmed_email) %></div>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :password, t("auth.new_password"), class: "form-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <div class="form-text"><%= t("auth.leave_blank") %></div>
+    </div>
+    <div class="mb-3">
+      <%= f.label :password_confirmation, t("auth.password_confirmation"), class: "form-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :current_password, t("auth.current_password"), class: "form-label" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", required: true %>
+      <div class="form-text"><%= t("auth.current_password_hint") %></div>
+    </div>
+    <%= f.submit t("common.save"), class: "btn btn-primary" %>
+  <% end %>
+</div>

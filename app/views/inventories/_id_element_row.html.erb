@@ -1,0 +1,22 @@
+<% kind = element&.kind || "fixed" %>
+<div class="id-element mb-2" data-id-element>
+  <div class="row g-2 align-items-center">
+    <div class="col-12 col-sm-5">
+      <div class="input-group">
+        <span class="input-group-text drag-handle" title="<%= t('common.drag') %>"><i class="bi bi-arrow-down-up"></i></span>
+        <select class="form-select" data-prop="kind" aria-label="<%= t('custom_id.element_type') %>">
+          <% CustomId::KINDS.each do |k| %>
+            <option value="<%= k %>" <%= 'selected' if k == kind %>><%= t("custom_id.kinds.#{k}") %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-sm-5">
+      <div class="input-group">
+        <input type="text" class="form-control" data-prop="format" maxlength="100" value="<%= element&.format %>" aria-label="<%= t('custom_id.format') %>">
+        <button type="button" class="btn btn-outline-secondary" data-id-help tabindex="0" title="<%= t('custom_id.help_title') %>"><i class="bi bi-question-circle"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="form-text" data-id-hint><%= t("custom_id.hints.#{kind}") %></div>
+</div>

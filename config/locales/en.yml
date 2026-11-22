@@ -1,0 +1,261 @@
+en:
+  app:
+    name: Inventories
+  languages:
+    en: English
+    uz: O'zbekcha
+  nav:
+    search: Search
+    search_placeholder: Search inventories and items
+    theme_dark: Dark theme
+    theme_light: Light theme
+    my_page: My page
+    account: Account
+    admin: Users
+    sign_in: Sign in
+    sign_up: Sign up
+    sign_out: Sign out
+  common:
+    close: Close
+    nothing_found: Nothing here yet.
+    new: New
+    edit: Edit
+    delete: Delete
+    save: Save
+    cancel: Cancel
+    confirm_delete: Delete the selected records? This cannot be undone.
+    filter: Filter by title
+    select: Select
+    select_all: Select all
+    drag: Drag to reorder
+    reload: Reload the page
+    markdown_supported: Markdown is supported.
+    checked: "Yes"
+    unchecked: "No"
+  errors:
+    not_found: Page not found
+    back_home: Back to the main page
+  home:
+    latest: Latest inventories
+    popular: Most popular inventories
+    tags: Tags
+  search:
+    title: Search
+    by_tag: Inventories with tag
+    results_for: "Search results for “%{query}”"
+    inventories: Inventories
+    items: Items
+    inventory: Inventory
+    matched_text: Content
+  inventories:
+    title: Title
+    description: Description
+    category: Category
+    creator: Creator
+    items: Items
+    created_at: Created
+    public: Public
+    restricted: Restricted access
+    new_title: New inventory
+    tags: Tags
+    tags_placeholder: Type to find or add a tag
+    image: Image
+    upload_image: Upload
+    remove_image: Remove
+    cloudinary_missing: Image upload is not configured. Set CLOUDINARY_CLOUD_NAME and CLOUDINARY_UPLOAD_PRESET.
+    tabs:
+      items: Items
+      chat: Discussion
+      settings: Settings
+      custom_id: Custom ID
+      fields: Fields
+      access: Access
+      stats: Statistics
+      export: Export
+  users:
+    member_since: "Registered %{date}"
+    admin: Admin
+    user: User
+    blocked: Blocked
+    active: Active
+    my_inventories: My inventories
+    inventories: Inventories
+    writable_inventories: Inventories I can edit
+    name: Name
+    email: E-mail
+    role: Role
+    status: Status
+    registered: Registered
+  admin:
+    users: Users
+    block: Block
+    unblock: Unblock
+    promote: Make admin
+    demote: Remove admin
+    filter: Name or e-mail starts with
+    you: you
+  items:
+    add: Add item
+    filter: Filter items
+    new: New item
+    empty: This inventory has no items yet.
+    created_at: Created
+    created_by: Created by
+    likes: Likes
+    like: Like
+    unlike: Remove like
+    deleted_user: deleted user
+    id_placeholder: Generated automatically
+    id_hint_new: Leave empty to generate the ID from the inventory format.
+    id_hint_edit: The ID must follow the current format of the inventory.
+    id_example: "Example: %{example}"
+  posts:
+    empty: No posts yet.
+    new: New post
+    placeholder: Write a message
+    send: Send
+    sign_in_hint: sign in to take part in the discussion.
+  custom_id:
+    intro: Set up inventory numbers in your preferred format. Add elements, edit them, drag to reorder, or drag an element out of the list to delete it.
+    example: Example
+    element_type: Element type
+    format: Format
+    help_title: Formatting help
+    add: Add element
+    note: Existing items keep their IDs when the format changes. The new format is applied when an item is created or edited.
+    kinds:
+      fixed: Fixed text
+      rand20: 20-bit random
+      rand32: 32-bit random
+      rand6: 6-digit random
+      rand9: 9-digit random
+      guid: GUID
+      datetime: Date/time
+      sequence: Sequence
+    hints:
+      fixed: A piece of unchanging text. Any Unicode characters, including emoji.
+      rand20: A random value. E.g., a six-digit decimal (D6) or a 5-digit hex (X5).
+      rand32: A random value. E.g., a ten-digit decimal (D10) or an 8-digit hex (X8).
+      rand6: A random number from 000000 to 999999 (D6).
+      rand9: A random number from 000000000 to 999999999 (D9).
+      guid: A globally unique identifier, with dashes (D) or without (N).
+      datetime: Item creation date and time. E.g., the year (yyyy) or an abbreviated day of the week (ddd).
+      sequence: A sequential index. E.g., with leading zeros (D4) or without them (D).
+    help:
+      fixed: "The text is inserted as is.\nExamples: PART-  |  📚-  |  _"
+      rand20: "A number from 0 to 1 048 575.\nD — decimal, D7 — decimal with leading zeros up to 7 digits.\nX — hex, X5 — hex padded to 5 digits; x5 for lower case.\nText after the code is appended as is: X5_ → A7E3A_"
+      rand32: "A number from 0 to 4 294 967 295.\nD — decimal, D10 — decimal with leading zeros.\nX — hex, X8 — hex padded to 8 digits; x8 for lower case.\nText after the code is appended as is: X8- → E74FA329-"
+      rand6: "A number from 0 to 999 999.\nD6 — always six digits, D — without leading zeros.\nX or X5 — the same number in hex.\nText after the code is appended as is: D6_ → 004217_"
+      rand9: "A number from 0 to 999 999 999.\nD9 — always nine digits, D — without leading zeros.\nX or X8 — the same number in hex.\nText after the code is appended as is."
+      guid: "D — 36 characters with dashes, N — 32 characters without them.\nText after the code is appended as is: N- → 3f2a…9c-"
+      datetime: "yyyy — year, yy — two-digit year\nMM — month, MMM — abbreviated month name\ndd — day, ddd — abbreviated day of the week\nHH — hours, mm — minutes, ss — seconds\nOther characters are kept: yyyy-MM-dd_ → 2026-11-21_"
+      sequence: "The largest sequence number in the inventory plus one.\nD — as is, D4 — with leading zeros up to 4 digits: 0013.\nX4 — the same in hex.\nText after the code is appended as is: D3_ → 013_"
+  fields:
+    intro: "Custom fields of the items in this inventory: up to %{count} of each type. Drag to reorder. Fields that are removed here only stop being shown."
+    add: Add field
+    empty: No custom fields yet.
+    fixed_note: "The ID, the creator and the creation date are present in every item and are not listed here."
+    name: Title
+    description: Description (shown as a hint in forms)
+    show: In table
+    show_hint: Show this field as a column in the items table
+    max_length: Max length
+    pattern: Regular expression
+    min: Min value
+    max: Max value
+    options: "Options, one per line"
+    kinds:
+      string: Single-line text
+      text: Multi-line text
+      number: Number
+      link: Document/image link
+      bool: Checkbox
+      select: One from the list
+  access:
+    public: Public inventory
+    public_hint: Any signed-in user can add, edit and delete items.
+    users: Users with write access
+    add: Add a user
+    search_placeholder: Start typing a name or an e-mail
+    remove: Remove
+    empty: Nobody has been added yet.
+  stats:
+    items: items
+    numeric: Numeric fields
+    field: Field
+    filled: Filled in
+    average: Average
+    min: Min
+    max: Max
+    most_used: most frequent values
+    no_values: No values yet
+    flags: Checkboxes
+    checked: "%{checked} of %{total} checked"
+  export:
+    intro: "Download all %{count} items of this inventory with every custom field."
+  flash:
+    forbidden: You do not have access to this action.
+    saved: Changes saved.
+    deleted: "Deleted: %{count}."
+    delete_conflict: "Not deleted: %{count}. These records were changed by someone else after you opened the page. Review them and try again."
+    stale: This record was changed by someone else after you opened it. Your changes were not saved.
+    item_created: "Item %{id} added."
+    oauth_failed: Could not sign you in with this account.
+  js:
+    saved: All changes saved
+    unsaved: Unsaved changes
+    saving: Saving…
+    conflict: Changed by someone else
+    error: Could not save
+    offline: No connection
+  auth:
+    continue_with: "Continue with %{provider}"
+    or_email: or use your e-mail
+    sign_in: Sign in
+    sign_up: Sign up
+    forgot_password: Forgot your password?
+    resend_confirmation: Resend confirmation e-mail
+    send_reset: Send reset link
+    change_password: Change password
+    name: Name
+    email: E-mail
+    password: Password
+    new_password: New password
+    password_confirmation: Repeat the password
+    current_password: Current password
+    current_password_hint: Needed to confirm the changes.
+    remember_me: Remember me
+    password_hint: "At least %{count} characters."
+    leave_blank: Leave empty to keep the current password.
+    pending_reconfirmation: "Waiting for confirmation of %{email}."
+  mail:
+    greeting: "Hello %{name},"
+    confirm_text: "Please confirm your e-mail address to finish the registration:"
+    confirm_link: Confirm my account
+    reset_text: "Someone asked for a link to change your password:"
+    reset_link: Change my password
+    reset_ignore: If it was not you, just ignore this letter. The password stays the same.
+    email_changed: "Your e-mail address has been changed to %{email}."
+    password_changed: Your password has been changed.
+  devise:
+    failure:
+      blocked: Your account is blocked.
+  activerecord:
+    attributes:
+      item:
+        custom_id: ID
+      inventory:
+        title: Title
+        image_url: Image
+      user:
+        name: Name
+        email: E-mail
+        password: Password
+        password_confirmation: Password confirmation
+        current_password: Current password
+    errors:
+      models:
+        item:
+          attributes:
+            custom_id:
+              invalid_format: "does not match the inventory format (example: %{example})"

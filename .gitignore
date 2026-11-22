@@ -1,0 +1,9 @@
+/.bundle
+/.env
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/public/assets
+/config/master.key
+/node_modules
